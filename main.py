@@ -62,40 +62,58 @@ class GameView(ac.Window):
         pass
 
     def draw_cube(self):
+        # fonction pour dessiner le hypercube
+
+        # dessiner la face grise
         ac.draw.draw_polygon_filled(
             [points[self.frame][faces[self.rep][0]], points[self.frame][faces[self.rep][1]],
              points[self.frame][faces[self.rep][2]], points[self.frame][faces[self.rep][3]]],
             (100, 100, 100))
 
+        # dessiner les lignes blanches
         for a in lines:
             ac.draw_line(points[self.frame][a[0]][0], points[self.frame][a[0]][1],
                          points[self.frame][a[1]][0], points[self.frame][a[1]][1], ac.color.WHITE)
+
+        # dessiner les points oranges
         for a in points[self.frame]:
             ac.draw_point(a[0], a[1], ac.color.ATOMIC_TANGERINE, 5)
 
     def on_draw(self):
+        # fonction de dessin
+
         self.clear()
 
+        # appel de la function du cube
         self.draw_cube()
 
+        # le texte avec ellipse verte l'entourant
         ac.draw_text("Hypercube????", 360, 930, (255, 255, 255), 40)
         ac.draw_ellipse_outline(520, 950, 400, 72, (0, 255, 0), 7)
 
+        # fleche rouge
         ac.draw_rect_filled(ac.Rect(480, 490, 760, 790, 30, 70, 510, 860), ac.color.RED)
         ac.draw_triangle_filled(465, 825, 555, 825, 510, 780, ac.color.RED)
 
+        # fleche blanche
         ac.draw_arc_outline(700, 800, 300, 400, (255, 255, 255), 210, 360, 30, 280)
         ac.draw_triangle_filled(780, 620, 740, 640, 765, 680, ac.color.WHITE)
 
+        # cercle entourant le cube
         ac.draw_circle_outline(500, 500, 250, (250, 0, 0), 10)
 
     def on_update(self, delta_time: float) -> bool | None:
-        # print(self.frame, self.rep)
+        # boucle pour controler la rotation du cube
+
         self.second += delta_time
         if round(self.second, 1) == 0.1:
+            # code execute chaque 0.1 secondes
+
             self.frame += 1
             self.second = 0
             if self.frame == 5:
+                # code execute chaque 5 frames, donc 0.5 secondes
+
                 self.frame = 0
                 self.rep += 1
                 if self.rep == 4:
