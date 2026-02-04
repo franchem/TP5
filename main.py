@@ -1,3 +1,8 @@
+# TP5, par Mika Franche
+# Janvier 2026
+# Desolé pour les listes
+
+
 import arcade as ac
 WINDOW_WIDTH = 1024
 WINDOW_HEIGHT = 1024
@@ -68,12 +73,19 @@ class GameView(ac.Window):
         for a in points[self.frame]:
             ac.draw_point(a[0], a[1], ac.color.ATOMIC_TANGERINE, 5)
 
-        ac.draw_text("Hypercube????", 380, 900, (255, 255, 255), 40)
+        ac.draw_text("Hypercube????", 360, 930, (255, 255, 255), 40)
+        ac.draw_ellipse_outline(520, 950, (400), (72), (0, 255, 0), 7)
+
 
         ac.draw_rect_filled(ac.Rect(480, 490, 760, 790, 30, 70, 510, 860), ac.color.RED)
         ac.draw_triangle_filled(465, 825, 555, 825, 510, 780, ac.color.RED)
 
+        ac.draw_arc_outline(700, 800, 300, 400, (255, 255, 255), 210, 360, 30, 280)
+        ac.draw_triangle_filled(780, 620, 740, 640, 765, 680, ac.color.WHITE)
+
         ac.draw_circle_outline(500, 500, 250, (250, 0, 0), 10)
+
+
 
     def on_update(self, delta_time: float) -> bool | None:
         # print(self.frame, self.rep)
