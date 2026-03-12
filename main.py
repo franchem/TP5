@@ -2,7 +2,6 @@
 # Janvier 2026
 # Desolé pour les listes
 
-
 import arcade as ac
 
 WINDOW_WIDTH = 1024
